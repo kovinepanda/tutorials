@@ -8,12 +8,18 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import App from "./App";
 import rootReducer from "./rootReducer";
+import { userLoggedIn } from "./actions/auth";
 import registerServiceWorker from "./registerServiceWorker";
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+if (localStorage.bookwormJWT) {
+  const user = { token: localStorage.bookwormJWT };
+  store.dispatch(userLoggedIn(user));
+}
 
 ReactDOM.render(
   <BrowserRouter>
