@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "bookworm-react"
+		},
+		{
+			"path": "bookworm-api"
+		}
+	],
+	"settings": {}
+}
