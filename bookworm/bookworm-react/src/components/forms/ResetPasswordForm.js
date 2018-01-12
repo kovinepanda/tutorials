@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Form, Button, Message } from "semantic-ui-react";
-import Validator from "validator";
 import InlineError from "../messages/InlineError";
 
-class LoginForm extends Component {
+class ResetPasswordForm extends Component {
   state = {
     data: {
-      email: "",
-      password: ""
+      token: this.props.token,
+      password: "",
+      passwordConfirmation: ""
     },
     loading: false,
     errors: {}
@@ -19,10 +19,10 @@ class LoginForm extends Component {
       data: { ...this.state.data, [e.target.name]: e.target.value }
     });
 
-  onSubmit = () => {
+  onSubmit = e => {
+    e.preventDefault();
     const errors = this.validate(this.state.data);
     this.setState({ errors });
-
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
       this.props
@@ -35,12 +35,11 @@ class LoginForm extends Component {
 
   validate = data => {
     const errors = {};
-    if (!Validator.isEmail(data.email)) {
-      errors.email = "Invalid email";
-    }
-    if (!data.password) {
-      errors.password = "Can't be blank";
-    }
+    if (!data.password) errors.password = "Cant't be blank";
+    if (!data.passwordConfirmation)
+      errors.passwordConfirmation = "Cant't be blank";
+    if (data.password !== data.passwordConfirmation)
+      errors.global = "Passwords must match";
 
     return errors;
   };
@@ -51,42 +50,44 @@ class LoginForm extends Component {
       <Form onSubmit={this.onSubmit} loading={loading}>
         {!!errors.global && (
           <Message negative>
-            <Message.Header>Something went wrong</Message.Header>
-            <p>{errors.global}</p>
+            <Message.Header>{errors.global}</Message.Header>
           </Message>
         )}
-        <Form.Field error={!!errors.email}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="example@your.email"
-            value={data.email}
-            onChange={this.onChange}
-          />
-          {errors.email && <InlineError text={errors.email} />}
-        </Form.Field>
         <Form.Field error={!!errors.password}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">New Password</label>
           <input
             type="password"
             id="password"
             name="password"
-            placeholder="make secure password"
+            placeholder="your new password"
             value={data.password}
             onChange={this.onChange}
           />
           {errors.password && <InlineError text={errors.password} />}
         </Form.Field>
-        <Button primary>Login</Button>
+        <Form.Field error={!!errors.passwordConfirmation}>
+          <label htmlFor="password">Confirm your new password</label>
+          <input
+            type="password"
+            id="passwordConfirmation"
+            name="passwordConfirmation"
+            placeholder="type it again, please"
+            value={data.passwordConfirmation}
+            onChange={this.onChange}
+          />
+          {errors.passwordConfirmation && (
+            <InlineError text={errors.passwordConfirmation} />
+          )}
+        </Form.Field>
+        <Button primary>Sign Up</Button>
       </Form>
     );
   }
 }
 
-LoginForm.propTypes = {
-  submit: PropTypes.func.isRequired
+ResetPasswordForm.propTypes = {
+  submit: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired
 };
 
-export default LoginForm;
+export default ResetPasswordForm;
