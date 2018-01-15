@@ -7,18 +7,7 @@ class SearchBookForm extends Component {
   state = {
     query: "",
     loading: false,
-    options: [
-      {
-        key: 1,
-        value: 1,
-        text: "firt book"
-      },
-      {
-        key: 2,
-        value: 2,
-        text: "second book"
-      }
-    ],
+    options: [],
     books: {}
   };
 
@@ -41,7 +30,7 @@ class SearchBookForm extends Component {
     this.setState({ loading: true });
     // FIXME not nice way :)
     axios
-      .get(`/api/books/search?q=${this.state.query}`)
+      .get(`/api/books/search?q=${this.state.query.searchQuery}`)
       .then(res => res.data.books)
       .then(books => {
         const options = [];

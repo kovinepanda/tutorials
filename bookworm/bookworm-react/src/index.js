@@ -11,6 +11,7 @@ import App from "./App";
 import rootReducer from "./rootReducer";
 import { userLoggedIn } from "./actions/auth";
 import registerServiceWorker from "./registerServiceWorker";
+import setAuthorizationHeader from "./utils/setAuthorizationHeader";
 
 const store = createStore(
   rootReducer,
@@ -24,6 +25,7 @@ if (localStorage.bookwormJWT) {
     email: payload.email,
     confirmed: payload.confirmed
   };
+  setAuthorizationHeader(localStorage.bookwormJWT);
   store.dispatch(userLoggedIn(user));
 }
 

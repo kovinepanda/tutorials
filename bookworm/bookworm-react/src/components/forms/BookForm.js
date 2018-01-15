@@ -130,7 +130,7 @@ class BookForm extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Button primary>Login</Button>
+        <Button primary>Save</Button>
       </Form>
     );
   }
