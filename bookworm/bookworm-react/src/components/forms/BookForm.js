@@ -80,7 +80,7 @@ class BookForm extends Component {
     const { data, errors, loading } = this.state;
     return (
       <Form onSubmit={this.onSubmit} loading={loading}>
-        <Grid columns={2} fluid stackable>
+        <Grid columns={2} stackable>
           <Grid.Row>
             <Grid.Column>
               <Form.Field error={!!errors.title}>
@@ -110,11 +110,12 @@ class BookForm extends Component {
               <Form.Field error={!!errors.pages}>
                 <label htmlFor="pages">Pages</label>
                 <input
-                  type="number"
+                  disabled={data.pages === undefined}
+                  type="text"
                   id="pages"
                   name="pages"
                   placeholder="pages"
-                  value={data.pages}
+                  value={data.pages !== undefined ? data.pages : "Loading..."}
                   onChange={this.onChangeNumber}
                 />
                 {errors.pages && <InlineError text={errors.pages} />}
@@ -143,7 +144,7 @@ BookForm.propTypes = {
     title: PropTypes.string.isRequired,
     authors: PropTypes.string.isRequired,
     covers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    pages: PropTypes.number.isRequired
+    pages: PropTypes.number
   }).isRequired
 };
 
