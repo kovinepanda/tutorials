@@ -8,6 +8,14 @@ public class BankAccount {
 
     private int balance;
 
+    public BankAccount(int balance) {
+        this.balance = balance;
+    }
+
+    public BankAccount() {
+
+    }
+
     public void deposit(int amount) {
         this.balance += amount;
     }
@@ -18,5 +26,8 @@ public class BankAccount {
 
     public void withdraw(int amount) {
         balance -= amount;
-    }
+        if (balance < 0) {
+            balance -= 5;
+        }
+     }
 }
