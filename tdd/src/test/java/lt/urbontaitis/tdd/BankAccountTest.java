@@ -13,8 +13,11 @@ public class BankAccountTest {
     @Test
     public void test() {
         BankAccount acc = new BankAccount();
-        acc.setDeposit(50);
+        acc.deposit(50);
         assertEquals(acc.getBalance(), 50);
+
+        acc.withdraw(30);
+        assertEquals(acc.getBalance(), 20);
     }
 
 }
