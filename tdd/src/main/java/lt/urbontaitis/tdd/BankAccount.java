@@ -24,10 +24,16 @@ public class BankAccount {
         return balance;
     }
 
-    public void withdraw(int amount) {
+    public boolean withdraw(int amount) {
+        if (amount > (3 * balance)) {
+            return false;
+        }
+
         balance -= amount;
         if (balance < 0) {
             balance -= 5;
         }
+
+        return true;
      }
 }
