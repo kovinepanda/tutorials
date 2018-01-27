@@ -1,3 +1,10 @@
+package week1
+
+/**
+  *
+  * Created by Mindaugas Urbontaitis on 27/01/2018.
+  * scala
+  */
 object Session {
 
   def abs(x: Double) = if (x < 0) -x else x
@@ -16,6 +23,6 @@ object Session {
 
     sqrtIter(1.0)
   }
-
-  sqrt(2)
 }
+
+
