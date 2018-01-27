@@ -19,3 +19,4 @@ object Session {
 
   sqrt(2)
 }
+
