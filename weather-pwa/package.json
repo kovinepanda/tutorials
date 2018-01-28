@@ -1,0 +1,25 @@
+{
+  "name": "weather-pwa",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "html-minifier": "^3.5.8",
+    "npm-run-all": "^4.1.2",
+    "uglify-js": "^3.3.9"
+  },
+  "scripts": {
+    "build":
+      "npm-run-all clean create-app cp-app-data cp-images cp-html cp-css cp-js",
+    "clean": "rm -rf ./build",
+    "create-app":
+      "mkdir build && mkdir ./build/styles && mkdir ./build/scripts",
+    "cp-app-data": "cp -R favicon.ico manifest.json ./build/",
+    "cp-images": "rm -rf ./build/images/ && cp -R ./images ./build/",
+    "cp-css":
+      "html-minifier --input-dir ./styles --output-dir ./build/styles --collapse-whitespace --minify-css=true --remove-comments --file-ext css",
+    "cp-html":
+      "html-minifier index.html -o ./build/index.html --html5 --remove-comments --collapse-whitespace",
+    "cp-js":
+      "uglifyjs ./scripts/app.js -o ./build/scripts/app.js -c -m && uglifyjs ./serviceWorker.js -o ./build/serviceWorker.js -c -m "
+  }
+}
