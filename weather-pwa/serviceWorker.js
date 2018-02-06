@@ -2,11 +2,11 @@
 // which can handle cahce and expiration
 // https://github.com/GoogleChromeLabs/sw-precache
 var dataCacheName = "weatgerData-v4";
-var cacheName = "weatherPWA-step-v4";
+var cacheName = "weatherPWA-step-v5";
 var filesToCache = [
   "/",
   "/index.html",
-  "/scripts/app.min.js",
+  "/scripts/app.js",
   "/styles/inline.css",
   "/images/clear.png",
   "/images/cloudy-scattered-showers.png",
