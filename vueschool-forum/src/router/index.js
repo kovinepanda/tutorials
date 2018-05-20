@@ -13,7 +13,7 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/thread/:id',
+      path: '/threads/:id',
       name: 'ThreadShow',
       component: ThreadShow,
       props: true
