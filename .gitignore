@@ -10,7 +10,8 @@
 /**/build
 
 # vue tutorial uses build folder as build scripts
-!/vueschool-forum/build
+!/vue/vueschool-forum/build
+!/vue/shopping-cart/build
 
 # misc
 /**/.DS_Store
