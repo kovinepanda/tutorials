@@ -30,6 +30,9 @@
 /**/.idea
 /**/*.iml
 
+# xcode
+*.xcworkspace
+
 # scala
 /**/out/
 
