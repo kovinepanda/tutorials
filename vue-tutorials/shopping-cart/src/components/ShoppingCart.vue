@@ -23,7 +23,7 @@
       }),
 
       ...mapState({
-        checkoutStatus: 'checkoutStatus'
+        checkoutStatus: state => state.cart.checkoutStatus
       })
     },
 
