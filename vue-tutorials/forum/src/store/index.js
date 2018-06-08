@@ -42,10 +42,6 @@ export default new Vuex.Store({
       dispatch('createPost', {text, threadId})
     },
 
-    setThread(state, {thread, threadId}) {
-      Vue.set(state.threads, threadId, thread)
-    },
-
     updateUser({commit}, user) {
       commit('setUser', {userId: user['.key'], user})
     }
@@ -58,6 +54,10 @@ export default new Vuex.Store({
 
     setUser(state, {user, userId}) {
       Vue.set(state.users, userId, user)
+    },
+
+    setThread(state, {thread, threadId}) {
+      Vue.set(state.threads, threadId, thread)
     },
 
     appendPostToThread(state, {postId, threadId}) {

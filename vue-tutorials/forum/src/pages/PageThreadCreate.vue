@@ -31,7 +31,7 @@
       }
     },
 
-    data () {
+    data() {
       return {
         title: '',
         text: ''
@@ -39,7 +39,7 @@
     },
 
     methods: {
-      save () {
+      save() {
         this.$store.dispatch('createThread', {
           forumId: this.forum['.key'],
           title: this.title,
