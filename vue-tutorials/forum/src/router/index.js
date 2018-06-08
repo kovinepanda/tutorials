@@ -37,7 +37,14 @@ export default new Router({
     {
       path: '/me',
       name: 'Profile',
-      component: PageProfile
+      component: PageProfile,
+      props: true
+    },
+    {
+      path: '/me/edit',
+      name: 'ProfileEdit',
+      component: PageProfile,
+      props: {edit: true}
     },
     {
       path: '*',
