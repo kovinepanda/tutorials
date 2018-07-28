@@ -1,22 +1,21 @@
-import markdownPreviewer from "../js/markdownPreviewer";
+import markdownPreviewer from "../js/markdownPreviewer"
 
-var event = {
+const event = {
     preventDefaultCalled: false,
-    preventDefault: function() {
-        this.preventDefaultCalled = true;
-    }
+    preventDefault: function() { this.preventDefaultCalled = true; }
 };
-var source = {
+
+const source = {
+    value: "This is _some markdown_"
+};
+
+const preview = {
     innerHTML: ""
 };
 
-var preview = {
-    innerHTML: ""
-}
-
-var document = {
-    getElementById: function(id) {
-        if(id === "source") {
+const document = {
+    getElementById: (id) => {
+        if (id === "source") {
             return source;
         } else if (id === "preview") {
             return preview;
@@ -26,20 +25,18 @@ var document = {
     }
 }
 
-describe("markdownPreviewer",function() {
-    describe("attachPreviewer", function() {
-        it("renders markdown to the preview element", function() {
-            var submitHandler = markdownPreviewer.attachPreviewer(document,
-                "source",
-                "preview");
-            
-                source.value = "This is _some markdown_";
+describe("markdownPreviewer", () => {
+    describe("attachPreviewer", () => {
+        it("renders markdown to the preview element", () => {
+            const submitHandler = markdownPreviewer.attachPreviewer(document,
+                                                                "source",
+                                                                "preview");
+            source.value = "This is _some markdown_";
 
-                submitHandler(event);
+            submitHandler(event);
 
-                expect(preview.innerHTML).toBe(
-                    "<p>This is <em>some markdown</em></p>");
-                expect(event.preventDefaultCalled).toBe(true);
+            expect(preview.innerHTML).toBe("<p>This is <em>some markdown</em></p>");
+            expect(event.preventDefaultCalled).toBe(true);
         });
     });
 });
