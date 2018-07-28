@@ -1,9 +1,7 @@
-const path = require('path');
+module.exports = function(env, argv) {
+    if (argv.mode === undefined) {
+        argv.mode = "development"
+    }
 
-module.exports = {
-	entry: './js/index.js',
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
-	}
-};
+    return require(`./webpack/${argv.mode}.js`)
+}
