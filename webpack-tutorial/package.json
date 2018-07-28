@@ -7,6 +7,7 @@
     "webpack_args": "--config webpack.config.js --display-error-details"
   },
   "scripts": {
+    "start": "webpack-dev-server --open",
     "webpack": "webpack $npm_package_config_webpack_args",
     "build:prod": "webpack $npm_package_config_webpack_args --mode=production -p",
     "karma": "karma start spec/karma.conf.js --single-run --no-color"
@@ -28,6 +29,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^4.0.0-beta.0",
     "phantomjs": "^2.1.7",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.5"
   }
 }
