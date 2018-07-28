@@ -29,6 +29,12 @@
 /**/.classpath
 /**/.project
 
+# idea
+/**/.idea
+
+# xcode
+*.xcworkspace
+
 # scala
 /**/out/
 
@@ -46,3 +52,8 @@
 /**/*.njsproj
 /**/*.sln
 /**/*.iml
+
+# specific project ignores
+/webpack-tutorial/dist
+/webpack-tutorial/dev
+/webpack-tutorial/production
