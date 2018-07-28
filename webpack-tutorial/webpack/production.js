@@ -8,6 +8,7 @@ module.exports = Merge(CommonConfig, {
         path: path.join(__dirname, '../production'),
         filename: '[chunkhash]-bundle.js'
     },    
+    devtool: "source-map",
     plugins: [
         new ExtractTextPlugin('[chunkhash]-style.css')
     ]

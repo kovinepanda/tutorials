@@ -2,12 +2,12 @@ module.exports = function(config) {
     config.set({
         frameworks: ['jasmine'],
         files: [
-            '**/*.spec.js'
+        '**/*.spec.js'
         ],
-        preprocessors: {
-            '**/*.spec.js': [ 'webpack' ]
+        preprocessors: {  
+        '**/*.spec.js': [ 'webpack', 'sourcemap' ]  
         },
-        webpack: require('../webpack.config'),
+        webpack: require('../webpack.config.js'),
         browsers: ['PhantomJS']
     })
 }
