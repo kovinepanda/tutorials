@@ -1,3 +1,6 @@
+import "tachyons";
+import "../css/style.css"
+
 import markdownPreviewer from './markdownPreviewer';
 
 window.onload = function() {
