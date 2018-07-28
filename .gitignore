@@ -52,3 +52,8 @@
 /**/*.ntvs*
 /**/*.njsproj
 /**/*.sln
+
+# specific project ignores
+/webpack-tutorial/dist
+/webpack-tutorial/dev
+/webpack-tutorial/production
