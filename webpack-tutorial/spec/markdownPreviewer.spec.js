@@ -1,4 +1,4 @@
-import markdownPreviewer from "../js/markdownPreviewer"
+import markdownPreviewer from "../src/markdownPreviewer"
 
 const event = {
     preventDefaultCalled: false,
