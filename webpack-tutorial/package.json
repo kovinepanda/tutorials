@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --open",
     "build": "npm-run-all -s clean:dev build:dev",
     "build:dev": "webpack $npm_package_config_webpack_args",
-    "build:prod": "npm-run-all webpack $npm_package_config_webpack_args --mode=production -p",
+    "build:prod": "webpack $npm_package_config_webpack_args --mode=production -p",
     "clean:dev": "rimraf dist",
     "clean:prod": "rimraf production",
     "karma": "karma start spec/karma.conf.js --single-run --no-color",
