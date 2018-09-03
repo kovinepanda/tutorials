@@ -1,15 +1,15 @@
 import "tachyons";
-import "../css/style.css"
+import "../css/style.css";
 
-import markdownPreviewer from './markdownPreviewer';
+import markdownPreviewer from "./markdownPreviewer";
 
-window.onload = function() {
+window.onload = () => {
     document.getElementById("editor").addEventListener(
         "submit",
         markdownPreviewer.attachPreviewer(
             document,
             "source",
-            "preview"
-        )
+            "preview",
+        ),
     );
 };

@@ -5,9 +5,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
+                test: /\.ts?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,                
             },
             {
                 test: /.css$/,
@@ -22,10 +22,13 @@ module.exports = {
             }
         ]
     },
+    resolve: {
+        extensions: ['.ts', '.js', '.json']
+    },
     plugins: [
         new HtmlPlugin({
             template: "./html/index.html"
         })
     ],
-    entry: './js/index.js'
+    entry: './src/index.ts'
 };
