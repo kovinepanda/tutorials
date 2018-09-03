@@ -1,18 +1,7 @@
-import "tachyons";
-import "../css/style.css";
+import Vue from "vue";
+import App from "./App.vue";
 
-import markdownPreviewer from "./markdownPreviewer";
-
-window.onload = () => {
-    const editor: HTMLElement | null = document.getElementById("editor");
-    if (!!editor) {
-        editor.addEventListener(
-            "submit",
-            markdownPreviewer.attachPreviewer(
-                document,
-                "source",
-                "preview",
-            ),
-        );
-    }
-};
+const vueApp = new Vue({
+    el: "#vue-ts-app",
+    render: (h: any) => h(App),
+});
