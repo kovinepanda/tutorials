@@ -4,12 +4,15 @@ import "../css/style.css";
 import markdownPreviewer from "./markdownPreviewer";
 
 window.onload = () => {
-    document.getElementById("editor").addEventListener(
-        "submit",
-        markdownPreviewer.attachPreviewer(
-            document,
-            "source",
-            "preview",
-        ),
-    );
+    const editor: HTMLElement | null = document.getElementById("editor");
+    if (!!editor) {
+        editor.addEventListener(
+            "submit",
+            markdownPreviewer.attachPreviewer(
+                document,
+                "source",
+                "preview",
+            ),
+        );
+    }
 };

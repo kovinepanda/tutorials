@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --open",
-    "webpack": "webpack $npm_package_config_webpack_args",
+    "build": "webpack $npm_package_config_webpack_args",
     "build:prod": "webpack $npm_package_config_webpack_args --mode=production -p",
     "karma": "karma start spec/karma.conf.js --single-run --no-color",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
