@@ -8,23 +8,20 @@
 </template>
 
 <script lang="ts">
-import { markdown } from "markdown";
-import "tachyons";
-import Vue from "vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { markdown } from 'markdown';
+import 'tachyons';
 // import "../css/styles.css"; tslint-loader fails to load styles
 
-export default Vue.extend({
-    data() {
-        return {
-            source: "",
-        };
-    },
-    computed: {
-        preview(): string {
-            return markdown.toHTML(this.source);
-        },
-    },
-});
+@Component
+export default class App extends Vue {
+    @Prop()
+    private source: string = '';
+
+    get preview() {
+        return markdown.toHTML(this.source);
+    }
+}
 </script>
 
 <style scoped>
