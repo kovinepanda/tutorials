@@ -1,17 +1,17 @@
 <template>
     <div>
-        <h1>Vue example</h1>
-        <textarea v-model="source" cols="80" rows="10"></textarea>
+        <b-alert show>
+            <h1>Vue example</h1>
+        </b-alert>
+        <b-form-textarea v-model="source" cols="80" rows="10"></b-form-textarea>
         <hr>
-        <div v-html="preview"></div>
+        <pre class="mt-3" v-html="preview"></pre>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Provide, Vue } from 'vue-property-decorator';
 import { markdown } from 'markdown';
-import 'tachyons';
-// import "../css/styles.css"; tslint-loader fails to load styles
 
 @Component
 export default class App extends Vue {

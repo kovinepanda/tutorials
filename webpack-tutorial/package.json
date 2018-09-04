@@ -18,9 +18,9 @@
     "test": "npm-run-all -p karma lint"
   },
   "dependencies": {
+    "bootstrap-vue": "^2.0.0-rc.11",
     "html-webpack-plugin": "^3.2.0",
     "markdown": "^0.5.0",
-    "tachyons": "^4.11.1",
     "vue": "^2.5.17",
     "vue-class-component": "^6.2.0",
     "vue-loader": "^15.4.1",
