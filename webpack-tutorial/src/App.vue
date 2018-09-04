@@ -20,7 +20,7 @@ export default Vue.extend({
         };
     },
     computed: {
-        preview() {
+        preview(): string {
             return markdown.toHTML(this.source);
         },
     },

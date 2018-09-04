@@ -1,5 +1,5 @@
 declare module "markdown" {
     export const markdown: {
-        toHTML: any,
+        toHTML(input: String): string,
     };
 }

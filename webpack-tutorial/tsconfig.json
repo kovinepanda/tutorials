@@ -2,11 +2,22 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
+        "noImplicitReturns": true,
         "noImplicitAny": true,
         "removeComments": true,
-        "module": "commonjs", // fails with es2015 "extend" property doesn't exist on type Vue
+        "module": "es2015",
+        // "experimentalDecorators": true,
+        // "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
         "target": "es5",
-        // "strict": true,
+        // "lib": [
+        //     "es2016",
+        //     "dom"
+        // ],
+        "strict": true,
         "allowJs": true
-    }
+    },
+    "include": [
+        "./src/**/*"
+    ]
 }
