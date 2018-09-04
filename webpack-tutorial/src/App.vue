@@ -8,24 +8,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Provide, Vue } from 'vue-property-decorator';
 import { markdown } from 'markdown';
 import 'tachyons';
 // import "../css/styles.css"; tslint-loader fails to load styles
 
 @Component
 export default class App extends Vue {
-    @Prop()
-    private source: string = '';
+  @Provide() source: string = '';
 
-    get preview() {
-        return markdown.toHTML(this.source);
-    }
+  get preview() {
+    return markdown.toHTML(this.source);
+  }
 }
 </script>
 
 <style scoped>
 h1 {
-    color: darkgreen;
+  color: darkgreen;
 }
 </style>
