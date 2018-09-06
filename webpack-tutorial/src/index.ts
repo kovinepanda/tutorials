@@ -9,5 +9,5 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 const vueApp = new Vue({
   el: '#vue-ts-app',
-  render: (h: any) => h(App)
+  render: (h: any) => h(App),
 });

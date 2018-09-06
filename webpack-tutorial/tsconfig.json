@@ -18,7 +18,9 @@
         "allowJs": true,
         "baseUrl": ".",
         "types": [
-            "node"
+            "node",
+            "mocha",
+            "chai"
         ],
         "paths": {
             "@/*": [
@@ -36,6 +38,8 @@
         "src/**/*.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
+        "tests/**/*.ts",
+        "tests/**/*.tsx",
     ],
     "exclude": [
         "node_modules"

@@ -15,7 +15,8 @@ import { markdown } from 'markdown';
 
 @Component
 export default class App extends Vue {
-  @Provide() source: string = '';
+  @Provide()
+  private source: string = '';
 
   get preview() {
     return markdown.toHTML(this.source);
