@@ -1,0 +1,47 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "module": "esnext",
+        "target": "esnext",
+        "jsx": "preserve",
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "strict": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "types": [
+            "node",
+            "mocha",
+            "chai"
+        ],
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "tests/**/*.ts",
+        "tests/**/*.tsx",
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
