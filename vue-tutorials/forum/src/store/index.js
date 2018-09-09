@@ -33,7 +33,7 @@ export default new Vuex.Store({
     updatePost({ commit, state }, { id, text }) {
       return new Promise((resolve, reject) => {
         const post = state.posts[id]
-        commit('setPost', { postId: id, posts: { ...post, text } })
+        commit('setPost', { postId: id, post: { ...post, text } })
         resolve(post)
       })
     },
