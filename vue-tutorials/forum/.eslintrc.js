@@ -22,13 +22,7 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 2 : 1,
-    'space-before-function-paren': [
-      'error',
-      {
-        anonymous: 'always',
-        named: 'never',
-        asyncArrow: 'always'
-      }
-    ]
+    // https://github.com/prettier/prettier/issues/1139
+    'space-before-function-paren': 0
   }
 }
