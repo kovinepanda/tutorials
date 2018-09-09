@@ -30,6 +30,14 @@ export default new Vuex.Store({
       return Promise.resolve(state.posts[postId])
     },
 
+    updatePost({ commit, state }, { id, text }) {
+      return new Promise((resolve, reject) => {
+        const post = state.posts[id]
+        commit('setPost', { postId: id, posts: { ...post, text } })
+        resolve(post)
+      })
+    },
+
     createThread({ state, commit, dispatch }, { text, title, forumId }) {
       /* eslint-disable no-unused vars */
       return new Promise((resolve, reject) => {

@@ -11,8 +11,14 @@
     </div>
 
     <div class="post-content">
-      <div>
+      <div v-if="!editing">
         {{post.text}}
+      </div>
+      <div v-else>
+        <PostEditor 
+          :post="post" 
+          @save="editing = false"
+        />
       </div>
     </div>
 
@@ -23,23 +29,34 @@
 </template>
 
 <script>
-  import {countObjectProperties} from '@/utils'
+import { countObjectProperties } from '@/utils'
+import PostEditor from './PostEditor'
 
-  export default {
-    props: {
-      post: {
-        required: true,
-        type: Object
-      }
+export default {
+  components: {
+    PostEditor
+  },
+
+  props: {
+    post: {
+      required: true,
+      type: Object
+    }
+  },
+
+  data() {
+    return {
+      editing: false
+    }
+  },
+
+  computed: {
+    user() {
+      return this.$store.state.users[this.post.userId]
     },
-
-    computed: {
-      user() {
-        return this.$store.state.users[this.post.userId]
-      },
-      userPostsCount() {
-        return countObjectProperties(this.user.posts)
-      }
+    userPostsCount() {
+      return countObjectProperties(this.user.posts)
     }
   }
+}
 </script>
