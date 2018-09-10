@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import sourceData from '@/data'
 import { countObjectProperties } from '@/utils'
 
 Vue.use(Vuex)
@@ -17,12 +16,19 @@ const makeAppendChildToParentMutation = ({ parent, child }) => {
 
 export default new Vuex.Store({
   state: {
-    ...sourceData,
+    categories: {},
+    forums: {},
+    threads: {},
+    posts: {},
+    users: {},
     authId: 'jUjmgCurRRdzayqbRMO7aTG9X1G2'
   },
 
   getters: {
-    authUser: state => state.users[state.authId],
+    authUser(state) {
+      // return state.users[state.authId]
+      return {}
+    },
 
     userPostsCount: state => id => countObjectProperties(state.users[id].posts),
     userThreadsCount: state => id =>
