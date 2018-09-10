@@ -34,22 +34,20 @@
 </template>
 
 <script>
-  import {countObjectProperties} from '@/utils'
-
-  export default {
-    props: {
-      thread: {
-        required: true,
-        type: Object
-      }
+export default {
+  props: {
+    thread: {
+      required: true,
+      type: Object
+    }
+  },
+  computed: {
+    repliesCount() {
+      return this.$store.getters.threadRepliesCount(this.thread['.key'])
     },
-    computed: {
-      repliesCount() {
-        return countObjectProperties(this.thread.posts) - 1
-      },
-      user() {
-        return this.$store.state.users[this.thread.userId]
-      }
+    user() {
+      return this.$store.state.users[this.thread.userId]
     }
   }
+}
 </script>
