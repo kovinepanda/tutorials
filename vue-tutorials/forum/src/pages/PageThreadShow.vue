@@ -12,7 +12,7 @@
       </router-link>
     </h1>
     <p>
-      By <a href="#" class="link-unstyled">Robin</a>, <AppDate :timestamp="thread.publishedAt"/>.
+      By <a href="#" class="link-unstyled">{{user.name}}</a>, <AppDate :timestamp="thread.publishedAt"/>.
       <span style="float:right; margin-top: 2px;" class="hide-mobile text-faded text-small">{{repliesCount}} replies by {{contributorsCount}} contributors</span>
     </p>
     <PostList :posts="posts"/>
@@ -40,6 +40,10 @@ export default {
   },
 
   computed: {
+    user() {
+      return this.$store.state.users[this.thread.userId]
+    },
+
     thread() {
       return this.$store.state.threads[this.id]
     },
