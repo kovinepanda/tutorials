@@ -65,9 +65,9 @@ export default {
   },
 
   created() {
+    // fetch thread
     this.$store.dispatch('fetchThread', { id: this.id }).then(thread => {
-      console.log('Thread ', thread)
-
+      // fetch user
       this.$store.dispatch('fetchUser', { id: thread.userId })
 
       Object.keys(thread.posts).forEach(postId => {
