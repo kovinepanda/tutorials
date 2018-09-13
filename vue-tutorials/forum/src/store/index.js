@@ -112,6 +112,14 @@ export default new Vuex.Store({
       commit('setUser', { userId: user['.key'], user })
     },
 
+    fetchForum({ dispatch }, { id }) {
+      return dispatch('fetchItem', { resource: 'forums', id })
+    },
+
+    fetchCategory({ dispatch }, { id }) {
+      return dispatch('fetchItem', { resource: 'categories', id })
+    },
+
     fetchThread({ dispatch }, { id }) {
       return dispatch('fetchItem', { resource: 'threads', id })
     },
@@ -124,12 +132,20 @@ export default new Vuex.Store({
       return dispatch('fetchItem', { resource: 'posts', id })
     },
 
-    fetchPosts({ dispatch }, { ids }) {
-      return dispatch('fetchItems', { resource: 'posts', ids })
+    fetchCategories({ dispatch }, { ids }) {
+      return dispatch('fetchItems', { resource: 'categories', ids })
     },
 
     fetchForums({ dispatch }, { ids }) {
       return dispatch('fetchItems', { resource: 'forums', ids })
+    },
+
+    fetchThreads({ dispatch }, { ids }) {
+      return dispatch('fetchItems', { resource: 'threads', ids })
+    },
+
+    fetchPosts({ dispatch }, { ids }) {
+      return dispatch('fetchItems', { resource: 'posts', ids })
     },
 
     fetchAllCategories({state, commit}) {
@@ -165,6 +181,7 @@ export default new Vuex.Store({
     },
 
     fetchItems({ dispatch }, { ids, resource }) {
+      ids = Array.isArray(ids) ? ids : Object.keys(ids)
       return Promise.all(ids.map(id => dispatch('fetchItem', { id, resource })))
     }
   },
