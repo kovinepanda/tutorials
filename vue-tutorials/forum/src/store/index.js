@@ -128,6 +128,24 @@ export default new Vuex.Store({
       return dispatch('fetchItems', { resource: 'posts', ids })
     },
 
+    fetchForums({ dispatch }, { ids }) {
+      return dispatch('fetchItems', { resource: 'forums', ids })
+    },
+
+    fetchAllCategories({state, commit}) {
+      console.log('🔥‍', 'all categories')
+      return new Promise((resolve, reject) => {
+        firebase.database().ref('categories').once('value', snapshot => {
+          const categoriesOject = snapshot.val()
+          Object.keys(categoriesOject).forEach(categoryId => {
+            const category = categoriesOject[categoryId]
+            commit('setItem', { resource: 'categories', id: categoryId, item: category })
+          })
+          resolve(Object.values(state.categories))
+        })
+      })
+    },
+
     fetchItem({ state, commit }, { id, resource }) {
       console.log('🔥‍', resource, id)
       return new Promise((resolve, reject) => {
