@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import ThreadEditor from '@/components/ThreadEditor'
 
 export default {
@@ -29,13 +30,14 @@ export default {
   },
 
   methods: {
+    ...mapActions(['createThread', 'fetchForum']),
+
     save({ text, title }) {
-      this.$store
-        .dispatch('createThread', {
-          forumId: this.forum['.key'],
-          title,
-          text
-        })
+      this.createThread({
+        forumId: this.forum['.key'],
+        title,
+        text
+      })
         .then(thread => {
           this.$router.push({
             name: 'ThreadShow',
@@ -50,7 +52,7 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('fetchForum', {id: this.forumId})
+    this.fetchForum({id: this.forumId})
   }
 }
 </script>

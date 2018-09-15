@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import ThreadEditor from '@/components/ThreadEditor'
 
 export default {
@@ -39,13 +40,14 @@ export default {
   },
 
   methods: {
+    ...mapActions(['updateThread', 'fetchThread', 'fetchPost']),
+
     save({ text, title }) {
-      this.$store
-        .dispatch('updateThread', {
-          id: this.id,
-          title,
-          text
-        })
+      this.updateThread({
+        id: this.id,
+        title,
+        text
+      })
         .then(thread => {
           this.$router.push({
             name: 'ThreadShow',
@@ -60,9 +62,9 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('fetchThread', {id: this.id})
+    this.fetchThread({id: this.id})
       .then(thread => {
-        this.$store.dispatch('fetchPost', {id: thread.firstPostId})
+        this.fetchPost({id: thread.firstPostId})
       })
   }
 }
