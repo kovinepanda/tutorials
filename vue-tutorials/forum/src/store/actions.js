@@ -97,18 +97,23 @@ export default {
     })
   },
 
-  createUser({state, commit}, {email, name, username, avatar = null}) {
+  registerUserWithEmailAndPassword({dispatch}, {email, name, username, password, avatar = null}) {
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(({user}) => {
+        return dispatch('createUser', {id: user.uid, email, name, username, password, avatar})
+      })
+  },
+
+  createUser ({state, commit}, {id, email, name, username, avatar = null}) {
     return new Promise((resolve, reject) => {
       const registeredAt = Math.floor(Date.now() / 1000)
-      const usernameLowercase = username.toLowerCase()
+      const usernameLower = username.toLowerCase()
       email = email.toLowerCase()
-      const user = {avatar, email, name, username, usernameLowercase, registeredAt}
-      const userId = firebase.database().ref('users').push().key
-
-      firebase.database().ref('users').child(userId).set(user)
+      const user = {avatar, email, name, username, usernameLower, registeredAt}
+      firebase.database().ref('users').child(id).set(user)
         .then(() => {
-          commit('setItem', { resource: 'users', id: userId, item: user })
-          resolve(state.users[userId])
+          commit('setItem', {resource: 'users', id: id, item: user})
+          resolve(state.users[id])
         })
     })
   },
