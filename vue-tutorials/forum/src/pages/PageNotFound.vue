@@ -1,7 +1,7 @@
 <template>
     <div class="col-full" :class="$style.centered">
         <h1 :class="$style.headingLarge">Not Found</h1>
-        <p :class="$style.textLarge">Go 
+        <p :class="$style.textLarge">Go
             <router-link :to="{name: 'Home'}">
                 Home
             </router-link>
@@ -10,7 +10,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  created() {
+    this.$emit('ready')
+  }
+}
 </script>
 
 <style module>
