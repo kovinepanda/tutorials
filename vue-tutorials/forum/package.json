@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "dotenv": "^6.0.0",
     "firebase": "^5.4.2",
     "moment": "^2.22.1",
     "nprogress": "^0.2.0",

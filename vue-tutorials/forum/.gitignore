@@ -13,6 +13,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-
-# temporary workaround to skip firebase config
-config/firebase.env.js
+# configs
+.env
