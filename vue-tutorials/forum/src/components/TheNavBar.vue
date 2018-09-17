@@ -17,48 +17,32 @@
 
     <!-- use .navbar-open to open nav -->
     <nav class="navbar">
-      <ul>
-        <!--<li class="navbar-item">-->
-        <!--<a href="index.html">Home</a>-->
-        <!--</li>-->
-        <!--<li class="navbar-item">-->
-        <!--<a href="category.html">Category</a>-->
-        <!--</li>-->
-        <!--<li class="navbar-item">-->
-        <!--<a href="forum.html">Forum</a>-->
-        <!--</li>-->
-        <!--<li class="navbar-item">-->
-        <!--<a href="thread.html">Thread</a>-->
-        <!--</li>-->
-        <!--&lt;!&ndash; Show these option only on mobile&ndash;&gt;-->
-        <!--<li class="navbar-item mobile-only">-->
-        <!--<a href="profile.html">My Profile</a>-->
-        <!--</li>-->
-        <!--<li class="navbar-item mobile-only">-->
-        <!--<a href="#">Logout</a>-->
-        <!--</li>-->
-
-        <li v-if="user" class="navbar-user">
-          <router-link
-            :to="{name: 'Profile'}"
-          >
+      <ul v-if="user">
+        <li class="navbar-user">
+          <router-link :to="{name: 'Profile'}">
             <img class="avatar-small" :src="user.avatar" :alt="user.name">
             <span>
               {{user.name}}
               <img class="icon-profile" src="../assets/img/svg/arrow-profile.svg" alt="">
             </span>
           </router-link>
-
-          <!-- dropdown menu -->
-          <!-- add class "active-drop" to show the dropdown -->
           <div id="user-dropdown">
             <div class="triangle-drop"></div>
             <ul class="dropdown-menu">
               <li class="dropdown-menu-item"><a href="profile.html">View profile</a></li>
-              <li class="dropdown-menu-item"><a href="#">Log out</a></li>
+              <li class="dropdown-menu-item"></li>
             </ul>
           </div>
+          <a @click.prevent="$store.dispatch('signOut')">Sign out</a>
         </li>
+      </ul>
+      <ul v-else>
+          <li class="navbar-item">
+            <router-link :to="{name: 'SignIn'}">Sign In</router-link>
+          </li>
+          <li class="navbar-item">
+            <router-link :to="{name: 'Register'}">Register</router-link>
+          </li>
       </ul>
     </nav>
   </header>
