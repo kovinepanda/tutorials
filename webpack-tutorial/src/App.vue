@@ -9,19 +9,29 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Provide, Vue } from 'vue-property-decorator';
+<script>
 import { markdown } from 'markdown';
 
-@Component
-export default class App extends Vue {
-  @Provide()
-  private source: string = '';
+export default {
+  props: {
+    source: {
+      type: String,
+      default: ''
+    }
+  },
 
-  get preview() {
-    return markdown.toHTML(this.source);
+  data() {
+    return {
+      source: this.source
+    };
+  },
+
+  computed: {
+    preview() {
+      return markdown.toHTML(this.source);
+    }
   }
-}
+};
 </script>
 
 <style scoped>
