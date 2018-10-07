@@ -4,25 +4,11 @@ const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
     module: {
-        rules: [
+        rules: [            
             {
-                enforce: 'pre',
-                test: /\.ts$/,
-                loader: 'tslint-loader',
-                exclude: /(node_modules)/,
-                options: {
-                    configFile: 'tslint.json'
-                }
-            },
-            {
-                test: /\.ts?$/,
+                test: /.js$/,
                 exclude: /node_modules/,
-                use: [{
-                    loader: 'ts-loader',
-                    options: {
-                        appendTsSuffixTo: [/\.vue$/],
-                    }
-                }]
+                loader: "babel-loader"
             },
             {
                 test: /\.vue?$/,
@@ -42,7 +28,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue', '.json'],
+        extensions: ['.js', '.vue', '.json'],
         modules: ['node_modules'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
@@ -54,5 +40,5 @@ module.exports = {
         }),
         new VueLoaderPlugin()
     ],
-    entry: './src/index.ts'
+    entry: './src/index.js'
 };
