@@ -16,13 +16,18 @@
     </p>
     <PostList :posts="posts"/>
     <PostEditor
+      v-if="authUser"
       :threadId="id"
     />
+    <div v-else class="text-center" style="margin-bottom: 50px;">
+        <router-link :to="{name: 'SignIn', query: {redirectTo: $route.path}}">Sign in</router-link> or
+        <router-link :to="{name: 'Register', query: {redirectTo: $route.path}}">Register</router-link> to post a reply
+    </div>
   </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import asyncDataStatus from '@/mixins/asyncDataStatus'
 import PostList from '@/components/PostList'
 import PostEditor from '@/components/PostEditor'
@@ -44,6 +49,10 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      authUser: 'authUser'
+    }),
+
     thread() {
       return this.$store.state.threads[this.id]
     },
@@ -81,11 +90,15 @@ export default {
         return this.fetchPosts({ ids: thread.posts })
       })
       .then(posts => {
-        return Promise.all(posts.map(post => {
-          this.fetchUser({ id: post.userId })
-        }))
+        return Promise.all(
+          posts.map(post => {
+            this.fetchUser({ id: post.userId })
+          })
+        )
       })
-      .then(() => { this.asyncDataStatus_fetched() })
+      .then(() => {
+        this.asyncDataStatus_fetched()
+      })
   }
 }
 </script>
