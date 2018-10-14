@@ -39,7 +39,7 @@ export default {
 
     hasUnsavedChanges() {
       return (
-        (this.$refs.editor.form.title || this.$ref.editor.form.text) &&
+        (this.$refs.editor.form.title || this.$refs.editor.form.text) &&
         !this.saved
       )
     }
